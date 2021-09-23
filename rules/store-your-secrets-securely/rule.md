@@ -3,20 +3,20 @@ type: rule
 title: Do you store your secrets securely?
 uri: store-your-secrets-securely
 authors:
-- title: Adam Cogan
-  url: https://ssw.com.au/people/adam-cogan
-- title: Mehmet Ozdemir
-  url: https://ssw.com.au/people/mehmet-ozdemir
-- title: Bryden Oliver
-  url: https://ssw.com.au/people/bryden-oliver
-- title: Brendan Richards
-  url: https://ssw.com.au/people/brendan-richards
-- title: Andrew Lean
-  url: https://ssw.com.au/people/andrew-lean
-- title: William Liebenberg
-  url: https://www.ssw.com.au/people/william-liebenberg
-- title: Piers Sinclair
-  url: https://www.ssw.com.au/people/piers-sinclair
+  - title: Adam Cogan
+    url: https://ssw.com.au/people/adam-cogan
+  - title: Mehmet Ozdemir
+    url: https://ssw.com.au/people/mehmet-ozdemir
+  - title: Bryden Oliver
+    url: https://ssw.com.au/people/bryden-oliver
+  - title: Brendan Richards
+    url: https://ssw.com.au/people/brendan-richards
+  - title: Andrew Lean
+    url: https://ssw.com.au/people/andrew-lean
+  - title: William Liebenberg
+    url: https://www.ssw.com.au/people/william-liebenberg
+  - title: Piers Sinclair
+    url: https://www.ssw.com.au/people/piers-sinclair
 related: []
 redirects:
   - do-you-store-your-secrets-securely
@@ -26,7 +26,7 @@ guid: 57dc15ba-605a-4a71-8b0e-d9f1551b9fc0
 ---
 Most systems will have variables that need to be stored securely; OpenId shared secret keys, connection strings, and API tokens to name a few.
 
-These secrets **must not** be stored in source control in plain text – it is insecure by nature, and basically means that it is sitting.
+These secrets **must not** be stored in source control in plain text – it is insecure by nature, and basically means that it is sitting in plain view for anyone to access.
 
 <!--endintro-->
 
@@ -34,23 +34,24 @@ There are many options for managing secrets in a secure way:
 
 ### Bad Practices
 
-
 ::: greybox
 
 #### Store production passwords in source control
 
 Pros:
+
 * Minimal change to existing process
 * Simple and easy to understand
 
 Cons:
+
 * Passwords are readable by anyone who has either source code or access to source control
 * Difficult to manage production and non-production config settings
 * Developers can read and access the production password
-:::
-::: bad
-![Figure: Bad practice - Overall rating: 1/10](BadSettings.png)
-:::
+  :::
+  ::: bad
+  ![Figure: Bad practice - Overall rating: 1/10](BadSettings.png)
+  :::
 
 ::: greybox
 
@@ -90,7 +91,7 @@ Cons:
 * Has key-person reliance on network admin
   :::
   ::: bad
-  Figure: Bad practice - Overall rating: 4/10  
+  Figure: Bad practice - Overall rating: 4/10\
   :::
 
 ::: greybox
@@ -109,7 +110,7 @@ Cons:
 * No clear way to manage the DevOps process for external config files
   :::
   ::: bad
-  Figure: Bad practice - Overall rating: 1/10  
+  Figure: Bad practice - Overall rating: 1/10\
   :::
 
 ### Good Practices
@@ -129,7 +130,7 @@ Cons:
 * DPAPI still needed
   :::
   ::: good
-  Figure: Good practice - Overall rating: 8/10  
+  Figure: Good practice - Overall rating: 8/10\
   :::
 
 ::: greybox
@@ -167,7 +168,7 @@ Cons:
 
 :::
 ::: good
-Figure: Good Practice - Overall rating 8/10  
+Figure: Good Practice - Overall rating 8/10\
 :::
 
 ::: greybox
@@ -187,16 +188,17 @@ Pros:
 Cons:
 
 * Tightly integrated into Azure so if you are running on another provider or on premises, this may be a concern. Authentication into Key Vault now needs to be secured.
-:::
-::: good
-Figure: Good Practice - Overall rating 9/10  
-:::
+  :::
+  ::: good
+  Figure: Good Practice - Overall rating 9/10\
+  :::
 
 #### Avoid using secrets with Azure Managed Identities
 
 The easiest way to manage secrets is not to have them in the first place. Azure Managed Identities allows you to assign an Azure AD identity to your application and then allow it to use its identity to log in to other services. This avoids the need for any secrets to be stored.
 
 Pros:
+
 * Best solution for cloud (Azure) solutions
 * Enterprise grade
 * Access granted based on Azure AD permissions - no need to 'securely' share passwords with colleagues
@@ -205,11 +207,10 @@ Pros:
 Cons:
 
 * Only works where Azure AD RBAC is available. NB. There are still some Azure services that don't yet support this. Most do though.
-:::
-::: good
-![Figure: Good Practice - Overall rating 10/10](GoodSettings.png)
-:::
-
+  :::
+  ::: good
+  ![Figure: Good Practice - Overall rating 10/10](GoodSettings.png)
+  :::
 
 #### Resources
 
@@ -222,4 +223,3 @@ The following resources show some concrete examples on how to apply the principl
 * https://docs.microsoft.com/en-us/sql/connect/ado-net/connection-strings-and-configuration-files?view=sql-server-ver15
 * https://docs.microsoft.com/en-us/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity?tabs=core5x
 * https://www.youtube.com/embed/-aTlON-UCVM
-
